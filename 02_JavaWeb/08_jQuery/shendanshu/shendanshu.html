@@ -1,0 +1,304 @@
+<!DOCTYPE HEML PUBLIC>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<html>
+    <head>
+    <meta charset="utf-8">
+        
+        <style>
+            h1 {
+                text-align: center;
+            }
+            .lf{
+                float:left;
+            }
+            .btn-audio{
+                width: 430px;
+                height: 5.2rem;
+                border: 1px solid #ebebeb;
+                background-color: #fdfdfd;
+                margin-bottom: 1rem;
+                position: relative;
+            }
+            .mp3Box{
+                width: 2.8rem;
+                height: 2.8rem;
+                position: absolute;
+                top: 1.2rem;
+                left: 1.2rem;
+                background:url("start.png") no-repeat center bottom;
+                background-size:cover;
+                z-index: 100;
+            }
+            html, body
+            {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+
+            div
+            {
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+            .container{
+                height: 720px;
+                width: 1080px;
+                margin: auto;
+            }
+            canvas {
+                
+                height:100%;
+                width: 100%;
+            }
+            .nav
+            {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 27px;
+                background-color: white;
+                color: black;
+                text-align: center;
+                line-height: 25px;
+            }
+
+            a
+            {
+                color: black;
+                text-decoration: none;
+                border-bottom: 1px dashed black;
+            }
+
+            a:hover
+            {
+                border-bottom: 1px solid red;
+            }
+
+            .previous
+            {
+                float: left;
+                margin-left: 10px;
+            }
+
+            .next
+            {
+                float: right;
+                margin-right: 10px;
+            }
+
+            .green
+            {
+                color: rgb(252, 88, 252);
+            }
+
+            .red
+            {
+                color: red;
+            }
+
+            textarea
+            {
+                width: 100%;
+                height: 100%;
+                border: 0;                
+                padding: 0;                
+                margin: 0;                
+                padding-bottom: 20px;              
+            }
+
+            .block-outer            
+            {                
+                float: left;                
+                width: 22%;                
+                height: 100%;                
+                padding: 5px;                
+                border-left: 1px solid black;                
+                margin: 30px 3px 3px 3px;                
+            }
+
+            .block-inner            
+            {                
+                height: 68%;                
+            }
+
+            .one
+            {                
+                border: 0;                
+            }
+
+            .wordContent{
+                text-align: center;
+            }
+
+            .wordContent a{
+                text-decoration: none;
+            }
+
+            .video-container {
+                width:432px;
+                height:768px;
+                margin: auto auto;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+<body marginwidth="0" marginheight="0">
+    <div class="btn-audio clear">
+        <img src="src/musicBackground.png" alt="" class="lf" style="width: 5.2rem;">
+        <div class="lf">
+            <p style="font-size: 1.2rem; color: #333;margin: 1rem 0 0.3rem 1.2rem;">Children's Christmas Favorites - </p>
+            <p style="font-size: 1rem; color: #888; margin: 0 0 0 1.2rem">Jingle Bells - Children's Christmas Favorites</p>
+        </div>
+        <div class="mp3Box">
+            <audio id="mp3Btn">
+                <source src="src/music.mp3" type="audio/mpeg" />
+            </audio>
+        </div>
+    </div>
+    
+    <div class="container">
+        <canvas id="c" ></canvas>
+    </div>
+    <div class="wordContent" >
+        <img src="src/words.png" class="img_words">
+        <img src="src/love.png" class="img_love" width="100" height="100" >
+        <div class="video-container" style="visibility: hidden;  background-color: aqua; margin:-818px auto; width:432px; position: relative;bottom: 5px; height: 768px; font-size: 0; line-height: 0; z-index: 100;">
+            <video id="video" height="768" width="432" controls autoplay="true">
+                <source src="src/video_1.mp4" type="video/mp4" codec="avc">
+            </video>
+        </div>
+    </div>
+
+    
+    <script>
+        var b = document.body;
+        var c = document.getElementsByTagName('canvas')[0];
+        var a = c.getContext('2d');
+        var getWidth = document.body.clientWidth;
+        var getHeight = document.body.clientHeight;
+        console.log(getWidth + "   " + getHeight);
+    </script>
+
+    <script>
+        M=Math;
+        Q=M.random;J=[];
+        U=16;
+        T=M.sin;
+        E=M.sqrt;
+        for(O=k=0;x=z=j=i=k<=350;)
+        with(M[k]=k?c.cloneNode(0):c)
+        {    
+            W=669;
+            width=height=k?32:500;
+            // width=getWidth;
+            // height=getHeight;
+            with(getContext('2d'))
+            if(k>10|!k)
+
+            for(
+            font='60px Impact',
+            V='rgba(';I=i*U,fillStyle=k?k==13?V+'205,205,215,.15)':
+            V+(147+I)+','+(k%2?128+I:0)+','+I+',.5)':'#cca',i<7;)
+
+            beginPath(fill(arc(U-i/3,24-i/2,k==13?4-(i++)/2:8-i++,0,M.PI*2,1)));
+
+            else for(;
+            x=T(i),        
+            y=Q()*2-1,        
+            D=x*x+y*y,        
+            B=E(D-x/.9-1.5*y+1),        
+            R=67*(B+1)*(L=k/9+.8)>>1,        
+            i++<W;        
+            )
+
+            if(D<1)    
+            beginPath(strokeStyle=V+R+','+(R+B*L>>0)+',40,.1)'),        
+            moveTo(U+x*8,U+y*8),        
+            lineTo(U+x*U,U+y*U),        
+            stroke();
+
+            for(        
+            y=H=k+E(k++)*25,        
+            R=Q()*W;        
+            P=3,j<H;)    
+            J[O++]=[
+                x+=T(R)*P+Q()*6-3,y+=Q()*U-8,
+                z+=T(R-11)*P+Q()*6-3,
+                j/H*20+((j+=U)>H&Q()>.8?Q(P=9)*4:0)>>1]
+        }
+
+        setInterval(function G(m,l)
+        {    
+            A=T(D-11);    
+            if(l)
+
+            return(        
+            m[2]-l[2])*A+(l[0]-m[0])*T(D);        
+            a.clearRect(0,0,W,W);        
+            J.sort(G);
+   
+            for(
+            i=0;
+            L=J[i++];
+            a.drawImage(M[L[3]+1],237+L[0]*A+L[2]*T(D)>>0,L[1]>>1))    
+            {
+                if(i==2e3)
+ 
+                a.fillText
+                ('Happy Christmas!',30,490);
+
+                if(!(i%20))        
+                a.drawImage(M[13],
+                ((157*(i*i)+T(D*5+i*i)*5)%W)>>0,
+                ((113*i+(D*i)/60)%(290+i/99))>>0);
+            }    
+            D+=.02
+        },1)
+    </script>
+
+    <script>
+        $(function(){
+            
+            //播放完毕
+            $('#mp3Btn').on('ended', function() {
+                console.log("音频已播放完成");
+                $('.mp3Box').css({'background':'url(src/pause.png) no-repeat center bottom','background-size':'cover'});
+            });
+
+            var audio = $('#mp3Btn')[0];
+            audio.volume = .3;
+            $('.mp3Box').click(function() {
+                event.stopPropagation();//防止冒泡
+                if(audio.paused){ //如果当前是暂停状态
+                    $('.mp3Box').css({'background':'url(src/pause.png) no-repeat center bottom','background-size':'cover'});
+                    audio.play(); //播放
+                }else{//当前是播放状态
+                    $('.mp3Box').css({'background':'url(src/start.png) no-repeat center bottom','background-size':'cover'});
+                    audio.pause(); //暂停
+                }
+            });
+
+            $('.img_love').click(function(){
+                event.stopPropagation();
+                var video = document.getElementById('video');
+                $('.video-container').css({'visibility':'visible'});
+                $('.mp3Box').css({'background':'url(src/start.png) no-repeat center bottom','background-size':'cover'});
+                    audio.pause(); //暂停
+                if (video.paused) {
+                    $('video').trigger('play');
+                } else {
+                    $('video').trigger('pause');
+                    $('.video-container').css({'visibility':'hidden'});
+                }
+            });
+        })
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../jquery-3.6.0.js"></script>
+    <title>jQuery选择器</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+    // 1 >>>>
+    <div id="div1">div1</div>
+    <div class="class">div2</div>
+    <div class="class">div3</div>
+
+    // 2 >>>>
+    <div>
+        <span>s1
+            <span>s1-1</span>
+            <span>s1-2</span>
+        </span>
+        <span>s2</span>
+    </div>
+    <div></div>
+    <p>p1</p>
+    <p>p2</p>
+
+    // 3 >>>>
+    <input type="text">
+    <input type="password">
+    <input type="password">
+
+    
+    <script>
+        // 1. 基本选择器
+        //1.元素选择器   $("元素的名称")
+        let divs = $("div");
+        console.log("divs.length = " + divs.length);
+        //2.id选择器    $("#id的属性值")
+        let div1 = $("#div1");
+        console.log("div1.id :" + div1)
+        //3.类选择器     $(".class的属性值")
+        let cls = $(".class");
+        console.log("cls.length = " + cls.length);
+
+        // 2. 层级选择器
+        // 1. 后代选择器 $("A B");      A下的所有B(包括B的子级)
+        let spans1 = $("div span");
+        //alert(spans1.length);
+
+        // 2. 子选择器   $("A > B");    A下的所有B(不包括B的子级)
+        let spans2 = $("div > span");
+        //alert(spans2.length);
+
+        // 3. 兄弟选择器 $("A + B");    A相邻的下一个B
+        let ps1 = $("div + p");
+        //alert(ps1.length);
+
+        // 4. 兄弟选择器 $("A ~ B");    A相邻的所有B
+        let ps2 = $("div ~ p");
+        alert(ps2.length);
+
+        // 3. 属性选择器
+        //1.属性名选择器   $("元素[属性名]")
+        let in1 = $("input[type]");
+        //alert(in1.length);
+        //2.属性值选择器   $("元素[属性名=属性值]")
+        let in2 = $("input[type='password']");
+        alert(in2.length);
+
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../jquery-3.6.0.js"></script>
+    <title>jQuery基础语法</title>
+    <style>
+        #content1{
+            width: 100px; 
+            height: 100px;
+            background-color: #3dff67;
+        }
+        #content2{
+            width: 100px; 
+            height: 100px;
+            background-color: #3dff67;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="input">
+    <input type="button" id="btn" value="点我"> 
+    <input type="button" id="btn2" value="解除绑定事件">
+    <div id="content1"></div>
+    <div id="content2"></div>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+    <script>
+        // 1. 事件的基本使用
+        $("#btn").click(function() {
+            console.log("btn clicked");
+        });
+
+        $("#input").focus(function() {
+            console.log("input focus");
+        });
+
+        $("input").blur(function() {
+            console.log("input finish");
+        });
+
+        // 2. 事件的绑定和解绑
+        // 解绑事件  如果不指定事件名称，则会把该对象绑定的所有事件都解绑
+        $("#btn2").on("click",function() {
+            $("#btn").off("click");
+            console.log("btn 事件解除成功");
+        });
+        
+        // 3. 事件的切换
+        // 方式一：单独定义
+        $("#content1").mouseover(function() {
+            $(this).css("background","red");
+        });
+
+        $("#content1").mouseout(function() {
+            $(this).css("background","gray");
+        });
+
+        // 方式二：链式定义
+        $("#content2").mouseover(function() {
+            $(this).css("background","gray");
+        }).mouseout(function() {
+            $(this).css("background","red");
+        });
+
+        // 4. 遍历操作
+        //方式一：传统方式
+        $("#btn").click(function(){
+            let lis = $("li");
+            for(let i = 0 ; i < lis.length; i++) {
+                alert(i + ":" + lis[i].innerHTML);
+            }
+        });
+
+        //方式二：对象.each()方法
+        $("#btn").click(function(){
+            let lis = $("li");
+            lis.each(function(index,ele){
+                alert(index + ":" + ele.innerHTML);
+            });
+        });
+
+        //方式三：$.each()方法
+        $("#btn").click(function(){
+            let lis = $("li");
+            $.each(lis,function(index,ele){
+                alert(index + ":" + ele.innerHTML);
+            });
+        });
+
+        //方式四：for of 语句遍历
+        $("#btn").click(function(){
+            let lis = $("li");
+            for(ele of lis){
+                alert(ele.innerHTML);
+            }
+        });
+    </script>
+</body>
+
+</html> 

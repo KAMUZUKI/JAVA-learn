@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../jquery-3.6.0.js"></script>
+    <title>操作文本</title>
+</head>
+<body>
+    <div id="div">我是div</div>
+    <input type="button" id="btn1" value="获取div文本">
+    <input type="button" id="btn2" value="获取div文本">
+    <script>
+        $("#btn1").click(function(){
+            $("#div").html("我是div");
+            let value = $("#div").html();
+            alert(value);
+        });
+
+        $("#btn2").click(function(){
+            $("#div").html("<b>我是div</b>");
+        });
+    </script>
+</body>
+</html>
