@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Scroll Snap</title>
+    <style type="text/css">
+        
+        main {
+            scroll-snap-type: y mandatory;
+            overflow: scroll;
+            height: 100vh;
+        }
+
+        section {
+            width: 100vw;
+            height: 100vh;
+            scroll-snap-align: start;
+        }
+
+        #content {
+            text-align: center;
+            
+        }
+
+        #content:nth-child(1) {
+            background-color: rgba(7, 226, 255,.5);
+        }
+        #content:nth-child(2) {
+            background-color: rgba(199, 253, 51,.5);
+        }
+        #content:nth-child(3) {
+            background-color: rgba(255, 36, 200,.5);
+        }
+        #content:nth-child(4) {
+            background-color: rgba(39, 255, 31,.5);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="content"><center>页面内容1</center></section>
+        <section id="content">页面内容2</section>
+        <section id="content">页面内容3</section>
+        <section id="content">页面内容4</section>
+    </main>
+</body>
+</html>

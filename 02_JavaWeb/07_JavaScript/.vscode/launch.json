@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "Launch Microsoft Edge and open the Edge DevTools",
+            "request": "launch",
+            "type": "vscode-edge-devtools.debug",
+            "url": "D:\\JAVA_L\\07_JavaScript\\4_函数\\高阶函数\\2_filter.html" // Provide your project's url to finish configuring
+        }
+    ]
+}

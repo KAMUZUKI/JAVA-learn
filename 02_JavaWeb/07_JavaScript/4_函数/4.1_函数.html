@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数</title>
+</head>
+<body>
+    <script>
+        //第一种定义方式
+        function abs(x){
+            if (x >= 0) {
+                return x;
+            } else {
+                return -x;
+            }
+        }
+
+        //第二种定义方式
+        var abs2 = function(x){
+            if (x >= 0) {
+                return x;
+            } else {
+                return -x;
+            }
+        }
+        
+        // arguments
+        // JavaScript还有一个免费赠送的关键字arguments，它只在函数内部起作用，
+        // 并且永远指向当前函数的调用者传入的所有参数。arguments类似Array但它不是一个Array：
+
+        function foo(x) {
+            console.log('x = ' + x);
+            for (let i = 0; i < arguments.length; i++) {
+                console.log('arg' + i + ' = ' + arguments[i]);
+            }
+
+            if (x>=0) {
+                return x;
+            } else {
+                return -x;
+            }
+        }
+
+        console.log('x = ' + abs(10));
+        console.log('================================')
+        console.log(foo(-10,-20,-30));
+
+        function func(){
+            console.log(arguments.length);
+            console.log('================================')
+            let i = arguments.length - 1;
+            while ( i > -1) {
+                let x = arguments[i];
+                console.log(i);
+                console.log(x >= 0 ? x : -x);
+                i--;
+            }
+        }
+
+        //多个参数问题
+        function test(a,b,...rest) {
+            console.log("a = " + a);
+            console.log("b = " + b);
+            console.log(rest);
+        }
+        
+    </script>
+</body>
+</html>

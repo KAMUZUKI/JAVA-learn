@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generate</title>
+</head>
+<body>
+    <script>
+        function* fib(max) {
+            var t,
+                a = 0,
+                b = 1,
+                n = 0;
+            while (n < max) {
+                yield a;
+                [a,b] = [b,a + b];
+                n++;
+            } 
+            return;
+        }
+
+        var f = fib(5);
+        console.log(f.next()); // {value: 0, done: false}
+        console.log(f.next()); // {value: 1, done: false}
+        console.log(f.next()); // {value: 1, done: false}
+        console.log(f.next()); // {value: 2, done: false}
+        console.log(f.next()); // {value: 3, done: false}
+        console.log(f.next()); // {value: undefined, done: true}
+
+        for (var x of fib(10)) {
+            console.log(x); 
+        }
+        
+        // 要生成一个自增的ID，可以编写一个next_id()函数：
+        /* var current_id = 0;
+
+        function next_id() {
+            current_id ++;
+            return current_id;
+        } */
+
+        function* next_id() {
+            let current_id = 1;
+            while (true) {
+                yield x;
+            }
+        }
+
+        // 测试:
+        var
+            x,
+            pass = true,
+            g = next_id();
+        for (x = 1; x < 100; x ++) {
+            if (g.next().value !== x) {
+                pass = false;
+                console.log('测试失败!');
+                break;
+            }
+        }
+        if (pass) {
+            console.log('测试通过!');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iterator</title>
+</head>
+<body>
+    <script>
+        var arr = [1,2,3,4,5,6,7,8,9];
+        for (let iterator of arr) {
+            console.log(iterator);
+        }
+
+        console.log("================================")
+
+        var map = new Map([["zhangsan",23],["lisi",24],["wangwu",25]]);
+        for (let iterator of map) {
+            console.log(iterator);
+        }
+
+        console.log("================================")
+        map.forEach(function(key, value,map) {
+            console.log(value);
+        });
+
+        console.log("================================")
+        map.forEach(function(key, value,map) {
+            console.log(key,value,map);
+        });
+        
+        console.log("================================");
+
+        var set = new Set([2,3,4,5,6,2,3]);
+        for (let iterator of set){
+            console.log(iterator);
+        }
+
+        function My(ele,index){
+          console.log(ele+'  '+index);
+        };
+        let index = 1,array=100;
+
+        My(index);   //结果为 1  undefined  
+        My(index,array);  //结果为1  100
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览器对象</title>
+</head>
+<body>
+    <dl id="drink-menu" style="border:solid 1px #ccc;padding:6px;">
+        <dt>摩卡</dt>
+        <dd>热摩卡咖啡</dd>
+        <dt>酸奶</dt>
+        <dd>北京老酸奶</dd>
+        <dt>果汁</dt>
+        <dd>鲜榨苹果汁</dd>
+    </dl>
+
+    <script>
+        'use strict';
+        // 1. window
+        console.log('window inner size:' + window.innerWidth + 'x' + window.innerHeight);
+        console.log('=============================');
+
+        // 2.navigator
+        console.log('appName = ' + navigator.appName); //浏览器名称；
+        console.log('appVersion = ' + navigator.appVersion); //浏览器版本；
+        console.log('language = ' + navigator.language); //浏览器设置的语言；
+        console.log('platform = ' + navigator.platform); //操作系统类型；
+        console.log('userAgent = ' + navigator.userAgent); //浏览器设定的User-Agent字符串。
+        console.log('=============================');
+
+        // 3.screen
+        // screen.width：屏幕宽度，以像素为单位；
+        // screen.height：屏幕高度，以像素为单位；
+        // screen.colorDepth：返回颜色位数，如8、16、24。
+        console.log('Screen size = ' + screen.width + ' x ' + screen.height);
+        console.log('=============================');
+
+        // 4.location
+        console.log(location.href);
+
+        // 例子：http://www.example.com:8080/path/index.html?a=1&b=2#TOP
+        location.protocol; // 'http'
+        location.host; // 'www.example.com'
+        location.port; // '8080'
+        location.pathname; // '/path/index.html'
+        location.search; // '?a=1&b=2'
+        location.hash; // 'TOP'
+
+        // 要加载一个新页面，可以调用location.assign()。如果要重新加载当前页面，调用location.reload()方法非常方便。
+        // if (confirm('重新加载当前页' + location.href + '?')) {
+        //     location.reload();
+        // } else {
+        //     location.assign('/'); // 设置一个新的URL地址
+        // }
+
+        // 5. Document
+        document.title = '努力学习JavaScript!';
+        var menu = document.getElementById('drink-menu');
+        var drink = document.getElementsByTagName('dd');
+        var i,s;
+
+        s = '提供的饮料有：';
+        for (var i = 0; i < drink.length; i++) {
+            s = s + drink[i].innerHTML + ',';
+        }
+        console.log(s);
+        
+        console.log(document.cookie);
+    </script>
+</body>
+</html>

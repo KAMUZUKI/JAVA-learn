@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <script>
+        // 1. every() 方法可以判断数组的所有元素是否满足测试条件。
+        var arr1 = ['apple','google','Microsoft'];
+        console.log(arr1.every((x)=> (x.length > 0)));  //true
+
+        console.log(arr1.every(function (s){
+            return s.toLowerCase() === s;
+        }));  //false
+
+        // 2. find()方法用于查找符合条件的第一个元素，如果找到了，返回这个元素，否则，返回undefined
+
+        var arr2 = ['Sun','moon','You'];
+        console.log(arr2.find(function (s){
+            return s.toLowerCase() === s;
+        }));   //moon
+
+        console.log(arr2.find(function (s){
+            return s.toUpperCase() === s;
+        }));   //undefined
+
+        console.log('The most import is ' + arr2.find(function (s){
+            return s === 'You';
+        }) + '!'); 
+
+        // 3. findIndex()和find()类似，也是查找符合条件的第一个元素，
+        //   不同之处在于findIndex()会返回这个元素的索引，如果没有找到，返回-1
+
+        var arr3 = ['Sun','moon' ,'You'];
+        console.log(arr3.findIndex(function (s){
+            return s.toLowerCase() === s;
+        }));  // 1
+
+        console.log(arr3.findIndex(function (s){
+            return s.toUpperCase() === s;
+        }));  // -1
+
+        // 4. forEach()和map()类似，它也把每个元素依次作用于传入的函数，
+        //    但不会返回新的数组。forEach()常用于遍历数组，因此，传入的函数不需要返回值
+
+        var arr4 = ['Sun','moon' ,'You'];
+        arr4.forEach(console.log);
+    </script>
+</body>
+</html>

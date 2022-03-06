@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方法</title>
+</head>
+<body>
+    <script>
+        var zhangsan = {
+            name:'zhangsan',
+            birthday:1990,
+            age:function(){ 
+                var y =new Date().getFullYear();
+                return y - this.birthday;
+            }
+        };
+        zhangsan.age;
+        console.log(zhangsan);
+        console.log(zhangsan.age());
+
+        'use strict';
+        var count = 0;
+        var oldParserInt = parseInt;
+
+        window.parseInt = function(){
+            count += 1;
+            return oldParserInt.apply(null, arguments);
+        };
+
+        // 测试:
+        parseInt('10');
+        parseInt('20');
+        parseInt('30');
+        console.log('count = ' + count); // 3
+    </script>
+</body>
+</html>

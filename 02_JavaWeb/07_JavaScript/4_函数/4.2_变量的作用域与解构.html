@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量的作用域</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function func() {
+            var x = "A";
+            function func2(){
+                var x  = "B";
+                function func3(){
+                    var x = "C";
+                    console.log("exinner " + x); // C
+                }
+                console.log("inner " + x); // B
+                func3();
+            } 
+            console.log("outer " + x); // A
+            func2();
+        }
+
+        //全局作用域
+        var course = "Lrean JavaScript";
+        console.log(course);
+        console.log(window.course);
+
+        function foo(){
+            alert("foo");
+        };
+        foo();
+        window.foo();
+
+        
+        //传统做法
+        var array = ['hello','JavaScript','ES6'];
+        var x = array[0];
+        var y = array[1];
+        var z = array[2];
+        console.log('x = ' + x + ', y = ' + y + ', z = ' + z);
+        
+        //解构赋值
+        var [x,y,z] = ['hello','JavaScript','ES6'];
+        console.log('x = ' + x + ', y = ' + y + ', z = ' + z);
+
+        // 注意，对数组元素进行解构赋值时，多个变量要用[...]括起来。
+        // 1.如果数组本身还有嵌套，也可以通过下面的形式进行解构赋值，注意嵌套层次和位置要保持一致：
+
+        let [a, [b, c]] = ['hello', ['JavaScript', 'ES6']];
+        /* 
+        a; // 'hello'
+        b; // 'JavaScript'
+        c; // 'ES6' 
+        */
+
+        // 2.解构赋值还可以忽略某些元素：
+
+        let [, , q] = ['hello', 'JavaScript', 'ES6']; // 忽略前两个元素，只对z赋值第三个元素
+        //q;  // 'ES6'
+
+        // 3.如果需要从一个对象中取出若干属性，也可以使用解构赋值，便于快速获取对象的指定属性：
+       var person = {
+           name: '张三',
+           age: 23,
+           gender: 'male',
+           passport:'G-123456',
+           school: 'HNIT'
+       };
+
+       var {name, age, gender} = person;
+       console.log("name: " + name + ', age: ' + age + ', gender: ' + gender);
+
+       // 4.对一个对象进行解构赋值时，同样可以直接对嵌套的对象属性进行赋值，只要保证对应的层次是一致的：
+
+        var person2 = {
+            name: '小明',
+            age: 20,
+            gender: 'male',
+            passport: 'G-12345678',
+            school: 'No.4 middle school',
+            address: {
+                city: 'Beijing',
+                street: 'No.1 Road',
+                zipcode: '100001'
+            }
+        };
+        var {name, address: {city, zip}} = person2;
+        /* 
+        name; // '小明'
+        city; // 'Beijing'
+        zip; // undefined, 因为属性名是zipcode而不是zip
+        // 注意: address不是变量，而是为了让city和zip获得嵌套的address对象的属性:
+        address; // Uncaught ReferenceError: address is not defined 
+        */
+
+        // 使用场景
+        // 1.解构赋值在很多时候可以大大简化代码。例如，交换两个变量x和y的值，可以这么写，不再需要临时变量：
+
+        var x=1, y=2;
+        [x, y] = [y, x]
+
+        // 2.快速获取当前页面的域名和路径：
+        var {hostname:domain, pathname:path} = location;
+        console.log(domain, path);
+
+        
+    </script>
+</body>
+</html>

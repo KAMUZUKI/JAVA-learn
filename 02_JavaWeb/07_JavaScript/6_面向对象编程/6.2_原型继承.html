@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型继承</title>
+</head>
+<body>
+    <script>
+        function inherits(Child, Parent) {
+            //创建空函数
+            var F = new Function();
+            //空函数原型对象和父类的原型对象进行中转
+            F.prototype = Parent.prototype;
+            //原型继承
+            Child.prototype = new F();
+            //还原子类的原型对象构造器
+            Child.prototype.constructor = Child;
+            //如果有重载时方便子类中方便调用父类方法
+            Child.supClass = Parent.prototype; 
+            //判断父类的原型对象构造器
+            //这里为了防止父类如果定义原型对象时使用 Student.prototype ={...} 的形式时没有设置constructor:Student ，就会使构造器变成了Object.加一层保险
+            if (Parent.prototype.constructor == Object.prototype.constuctor) {
+                //手动还原父类的原型构造器
+                Parent.prototype.constructor = Parent;
+            }
+        }
+
+        function Animal() {
+            
+        }
+
+        Animal.prototype.species = "动物";
+        
+        function Cat(name,color) {
+            this.name = name;
+            this.color = color;
+        }
+
+        inherits(Cat,Animal);
+        var cat1 = new Cat('大毛','黄色');
+        alert(cat1.species + ' ' + cat1.name + ' ' + cat1.color);
+        
+    </script>
+</body>
+</html>

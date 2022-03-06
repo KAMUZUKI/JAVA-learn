@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插入DOM</title>
+</head>
+<body>
+    'use strict';
+    <!-- HTML结构 -->
+    <p id="js">JavaScript</p>
+    <div id="list">
+        <p id="java">Java</p>
+        <p id="python">Python</p>
+        <p id="scheme">Scheme</p>
+    </div>
+
+    <!-- HTML结构 -->
+    <ol id="test-list">
+        <li class="lang">Scheme</li>
+        <li class="lang">JavaScript</li>
+        <li class="lang">Python</li>
+        <li class="lang">Ruby</li>
+        <li class="lang">Haskell</li>
+    </ol>
+
+    <script>
+        var
+            js = document.getElementById('js'),
+            list = document.getElementById('list');
+        list.appendChild(js);
+
+        // 从零创建一个新的节点，然后插入到指定位置
+        var list = document.getElementById('list');
+        for (var i = 0; i < 5; i++) {
+            var haskell = document.createElement(`p`);
+            haskell.id = `haskell${i}`;
+            haskell.innerText = `Haskell${i}`;
+            list.appendChild(haskell);
+        }
+            
+        // 下面的代码动态创建了一个<style>节点，然后把它添加到<head>节点的末尾，这样就动态地给文档添加了新的CSS定义
+        var d = document.createElement('style');
+        d.setAttribute('type','text/css');
+        d.innerHTML = 'p {color:red}';
+        document.getElementsByTagName('p')[0].appendChild(d);
+
+        // 假定我们要把 before 插入到Python之前
+        var list = document.getElementById('list'),
+            ref = document.getElementById('python'),
+            before = document.createElement('p');
+        before.id = 'before';
+        before.innerHTML = 'Before';
+        list.insertBefore(before, ref);
+
+        // 使用insertBefore重点是要拿到一个“参考子节点”的引用。
+        // 很多时候，需要循环一个父节点的所有子节点，可以通过迭代children属性实现
+        var i,c,
+            list = document.getElementById('list');
+        for (let i = 0; i < list.children.length; i++) {
+            c = list.children[i];
+        }
+
+        // 按字符串顺序重新排序DOM节点：
+        
+        list = document.getElementById('test-list');
+        sort = Array.from(list.children).sort((a, b) => a.innerText > b.innerText ? 1:-1);
+        for (let e of sort) list.appendChild(e);
+        // 测试:
+        (function () {
+            var
+                arr, i,
+                t = document.getElementById('test-list');
+            if (t && t.children && t.children.length === 5) {
+                arr = [];
+                for (i=0; i<t.children.length; i++) {
+                    arr.push(t.children[i].innerText);
+                }
+                if (arr.toString() === ['Haskell', 'JavaScript', 'Python', 'Ruby', 'Scheme'].toString()) {
+                    console.log('测试通过!');
+                }
+                else {
+                    console.log('测试失败: ' + arr.toString());
+                }
+            }
+            else {
+                console.log('测试失败!');
+            }
+        })();
+    </script>
+</body>
+</html>

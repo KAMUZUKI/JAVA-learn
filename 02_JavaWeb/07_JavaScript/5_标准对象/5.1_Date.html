@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+</head>
+<body>
+    <script>
+
+        // 1. 获取系统当前时间
+        var now = new Date();
+        now; // Wed Jun 24 2015 19:49:22 GMT+0800 (CST)
+        now.getFullYear(); // 2015, 年份
+        now.getMonth(); // 5, 月份，注意月份范围是0~11，5表示六月
+        now.getDate(); // 24, 表示24号
+        now.getDay(); // 3, 表示星期三
+        now.getHours(); // 19, 24小时制
+        now.getMinutes(); // 49, 分钟
+        now.getSeconds(); // 22, 秒
+        now.getMilliseconds(); // 875, 毫秒数
+        now.getTime(); // 1435146562875, 以number形式表示的时间戳
+
+        // 2. Date对象表示的时间总是按浏览器所在时区显示的，不过我们既可以显示本地时间，也可以显示调整后的UTC时间
+        var d = new Date(1435146562875);
+        console.log(d.toLocaleString()); // '2015/6/24 下午7:49:22'，本地时间（北京时区+8:00），显示的字符串与操作系统设定的格式有关
+        console.log(d.toUTCString()); // 'Wed, 24 Jun 2015 11:49:22 GMT'，UTC时间，与本地时间相差8小时
+    </script>
+</body>
+</html>

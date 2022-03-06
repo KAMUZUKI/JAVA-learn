@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 在一个Array中，删掉偶数，只保留奇数
+        var arr1 = [1,2,3,4,5,6,7,8];
+        var r1 = arr1.filter(function(x){
+            return x%2 != 0;
+        });
+        console.log(r1);
+
+        // 2. 把一个Array中的空字符串删掉
+        var arr2 = ['A','B',null,undefined,'C'];
+        var r2 = arr2.filter(function(s){
+            return s && s.trim();
+        });
+        console.log(r2);
+
+        // 3. 回调函数
+        // filter()接收的回调函数，其实可以有多个参数。通常我们仅使用第一个参数，
+        // 表示Array的某个元素。回调函数还可以接收另外两个参数，表示元素的位置和数组本身
+        var arr3 = ['A','B','C'];
+        var r3 = arr3.filter(function(element,index,self){
+            console.log(element);
+            console.log(index);
+            console.log(self);
+            return true;
+        });
+
+        // 4. 利用filter，可以巧妙地去除Array的重复元素
+        var arr4 = ['apple', 'strawberry', 'banana', 'pear', 'apple', 'orange', 'orange', 'strawberry'];
+        var r4 = arr4.filter(function(element,index,self){
+            return self.indexOf(element) === index;
+        });   
+        console.log(r4);
+        console.log(arr1.indexOf(5,4))   // 4
+        console.log(arr1.indexOf(5,7));  // -1
+
+        //  找出指定元素出现的所有位置
+        var indices = [];
+        var array = ['a','c','b','c','b',];
+        var element = 'c';
+        var idx = array.indexOf(element);
+        while (idx != -1) {
+            indices.push(idx);
+            idx = array.indexOf(element,idx + 1);
+        }
+        console.log(indices);
+
+        // 5. 请尝试用filter()筛选出素数
+        'use strict'
+        function get_primes(arr){
+            return arr.filter(e=>e!=1&&Array(Math.floor(Math.sqrt(e))).fill(1).map((x,y)=>x + y).slice(1).every(z=>e%z !== 0))
+        }
+
+        var x,r;
+        
+        arr5 = [];
+        for (x = 1; x < 100; x++) {
+            arr5.push(x);
+        }
+        console.log(arr5)
+        r = get_primes(arr5);
+        if (r.toString() === [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97].toString()) {
+            console.log('测试通过!');
+        } else {
+            console.log('测试失败: ' + r.toString());
+        }
+    </script>
+</body>
+</html>

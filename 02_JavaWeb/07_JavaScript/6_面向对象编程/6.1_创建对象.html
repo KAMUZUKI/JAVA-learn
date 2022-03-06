@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建对象</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        // 1.构造函数
+        function Student(name) {
+            this.name = name;
+            this.hello = function() {
+                alert('Hello' + this.name);
+            }
+        }
+        // 在JavaScript中，可以用关键字new来调用这个函数，并返回一个对象
+        var xiaoming = new Student('小明');
+        console.log(xiaoming.name);
+        xiaoming.hello();
+
+        // 忘记写new怎么办
+        function Person(props) {
+            this.name = props.name || '匿名';
+            this.grade = props.grade || 1;
+        }
+
+        Person.prototype.hello = function() {
+            alert('Hello' + this.name + '!');
+        }
+
+        function creatPerson(props) {
+            return new Person(props || {});
+        }
+        var zhangsan = creatPerson({name:'张三'});
+        console.log(zhangsan.grade);
+
+        // 练习
+        // 请利用构造函数定义Cat，并让所有的Cat对象有一个name属性，并共享一个方法say()，返回字符串'Hello, xxx!'
+        function Cat(name) {
+            this.name = name;
+        }
+
+        Cat.prototype.hello = function() {
+            return ('Hello, ' + this.name + '!');
+        }
+
+        // 测试:
+        var kitty = new Cat('Kitty');
+        var doraemon = new Cat('哆啦A梦');
+        if (kitty && kitty.name === 'Kitty'
+            && kitty.say
+            && typeof kitty.say === 'function'
+            && kitty.say() === 'Hello, Kitty!'
+            && kitty.say === doraemon.say
+        ) {
+            console.log('测试通过!');
+        } else {
+            console.log('测试失败!');
+        }
+    </script>
+</body>
+</html>

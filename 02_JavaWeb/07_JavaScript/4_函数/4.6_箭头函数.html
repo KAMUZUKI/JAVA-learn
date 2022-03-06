@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        var func1 = x => x*x;
+        console.log(func1(12));
+
+        var func2 = x => {
+            if(x > 0) {
+                return x*x;
+            }
+            else if(x < 0) {
+                return x/x;
+            }
+            else {
+                return x;
+            }
+        }
+        console.log(func2(23));
+
+        var func3 = (x,y,...rest) => {
+            var i,sum = x + y;
+            for(i = 0;i < rest.length;i++) {
+                sum += rest[i];
+            }
+            return sum;
+        }
+        console.log(func3(1,2,3,4));
+
+        //如果要返回一个对象，就要注意，如果是单表达式，这么写的话会报错：
+
+        // SyntaxError:
+        //x => { foo: x }
+        //因为和函数体的{ ... }有语法冲突，所以要改为：
+
+        // ok:
+        x => ({ foo: x })
+
+        //         this
+        // 箭头函数看上去是匿名函数的一种简写，但实际上，箭头函数和匿名函数有个明显的区别：
+        // 箭头函数内部的this是词法作用域，由上下文确定。
+        // 回顾前面的例子，由于JavaScript函数对this绑定的错误处理，下面的例子无法得到预期结果:
+        
+
+        // 现在，箭头函数完全修复了this的指向，this总是指向词法作用域，也就是外层调用者obj：
+
+        var obj2 = {
+            birth: 1990,
+            getAge: function () {
+                var b = this.birth; // 1990
+                var fn = () => new Date().getFullYear() - this.birth; // this指向obj对象
+                return fn();
+            }
+        };
+        console.log('obj2.getAge : ' + obj2.getAge()); // 31
+
+        // 请使用箭头函数简化排序时传入的函数
+        var arr = [1,23,21,3];
+        arr.sort((x,y) => (x-y)); // 正序
+        console.log(arr);
+        
+        arr.sort((x,y) => (y-x)); // 倒序
+        console.log(arr);
+    </script>
+</body>
+</html>
