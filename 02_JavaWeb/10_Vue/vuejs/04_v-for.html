@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for测试</title>
+    <script src="Vue/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(user,index) in users">
+                {{index}}--{{user.name}}--{{user.age}}--{{user.gender}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(value,key,index) in person">
+                {{index}}--{{key}}--{{value}}
+            </li>
+        </ul>
+    </div>
+<script>
+    var app = new Vue({
+       el:"#app",
+       data:{
+           users:[
+               {"name":"zhangsan","age":23,"gender":"man"},
+               {"name":"lisi","age":24,"gender":"man"},
+               {"name":"wangwu","age":25,"gender":"man"}
+           ],
+           person:{"name":"zhangsan","age":23,"gender":"man"}
+       }
+    });
+</script>
+</body>
+</html>
