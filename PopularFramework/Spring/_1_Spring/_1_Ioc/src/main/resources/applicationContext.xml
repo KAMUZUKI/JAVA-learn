@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 1.创建spring控制的资源-->
+    <bean id="userService" class="com.mu.service.impl.UserServiceImpl"/>
+    <bean id="animalSay1" class="com.mu.Animal">
+        <!--Set注入-->
+        <property name="AnimalName" value="狗"></property>
+        <property name="AnimalSpeak" value="汪汪汪..."></property>
+    </bean>
+
+    <bean id="animalSay2" class="com.mu.Animal">
+        <!--构造器注入(了解)-->
+        <constructor-arg name="animalName" value="猫"/>
+        <constructor-arg name="animalSpeak" value="喵喵喵..."/>
+    </bean>
+</beans>
