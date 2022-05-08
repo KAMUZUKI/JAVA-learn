@@ -1,0 +1,4 @@
+com\mu\domain\User.class
+com\mu\config\ServletContainersInitConfig.class
+com\mu\config\SpringMVCConfiguration.class
+com\mu\controller\UserController.class
