@@ -1,0 +1,9 @@
+person:
+  name: zhangsan
+  age: 23
+  happy: true
+  birthday: 2018/9/12
+  maps: {k: address,value: China}
+  dog:
+    name: wangcai
+    age: 3

@@ -1,4 +1,4 @@
-package com.mu.springboot01helloworld;
+package com.mu;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
