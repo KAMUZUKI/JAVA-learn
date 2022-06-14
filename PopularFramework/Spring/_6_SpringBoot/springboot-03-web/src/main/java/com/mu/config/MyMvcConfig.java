@@ -15,6 +15,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/index.html").setViewName("index");
     }
 
+
     @Bean
     public LocaleResolver localeResolver(){
         return new MyLocaleResolver();
