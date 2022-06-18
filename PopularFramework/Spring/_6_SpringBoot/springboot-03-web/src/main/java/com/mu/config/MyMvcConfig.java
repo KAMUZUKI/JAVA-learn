@@ -17,6 +17,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/main.html").setViewName("dashboard");
     }
 
+
     @Bean
     public LocaleResolver localeResolver(){
         return new MyLocaleResolver();
