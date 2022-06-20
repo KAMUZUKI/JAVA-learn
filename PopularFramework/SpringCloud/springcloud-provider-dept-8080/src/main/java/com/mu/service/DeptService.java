@@ -7,7 +7,7 @@ import java.util.List;
 public interface DeptService {
     boolean add(Dept dept);
 
-    int delete(int id);
+    Dept get(int id);
 
     List<Dept> queryList();
 }

@@ -18,8 +18,8 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public int delete(int id) {
-        return deptDao.delete(id);
+    public Dept get(int id) {
+        return deptDao.get(id);
     }
 
     @Override

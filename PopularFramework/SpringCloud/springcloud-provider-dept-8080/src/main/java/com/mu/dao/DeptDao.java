@@ -10,9 +10,9 @@ import java.util.List;
 @Repository
 public interface DeptDao {
 
-    boolean add(Dept dept);
+    public boolean add(Dept dept);
 
-    int delete(int id);
+    public Dept get(int id);
 
-    List<Dept> queryList();
+    public List<Dept> queryList();
 }

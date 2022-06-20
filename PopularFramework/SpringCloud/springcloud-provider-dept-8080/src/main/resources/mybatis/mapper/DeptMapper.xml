@@ -4,14 +4,14 @@
 
 <mapper namespace="com.mu.dao.DeptDao">
     <insert id="add" parameterType="Dept">
-        insert into dept (name,databasename)values (#{name},databasename)
+        insert into dept (name,databasename)values (#{name},DATABASE())
     </insert>
 
-    <delete id="delete" parameterType="String">
-        delete from dept where dept.name=#{name};
-    </delete>
+    <select id="get" resultType="Dept" parameterType="Integer">
+        select * from dept where deptno=#{deptno};
+    </select>
 
-    <select id="queryList">
+    <select id="queryList" resultType="Dept">
         select * from dept;
     </select>
 </mapper>
