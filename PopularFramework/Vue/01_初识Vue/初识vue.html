@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>初识vue</title>
+     <script src="../package/vue.js"></script>   <!--需要非自闭合标签-->
+
+</head>
+
+<body>
+    <h1>Hello Vue!</h1>
+<div id="root">
+    <h1>Hello {{name[0]}} !</h1>
+    <input type="text" v-on:click="al" v>
+</div>
+
+
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+    new Vue({
+        el: "#root",
+        data: {
+            name: ["张三","李四","王五"]
+        },
+        methods: {
+            al:function (){
+                alert("Hello");
+            }
+        }
+    })
+</script>
+</body>
+
+</html>

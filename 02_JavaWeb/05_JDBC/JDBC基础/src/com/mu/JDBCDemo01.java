@@ -10,7 +10,7 @@ public class JDBCDemo01 {
         Class.forName("com.mysql.jdbc.Driver");
 
         //3.获取连接
-        Connection con = DriverManager.getConnection("jdbc:mysql://192.168.23.129:3306/db2","root","muzuki");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloud1","root","muzuki");
 
         //4.获取执行者对象
         Statement stat = con.createStatement();
