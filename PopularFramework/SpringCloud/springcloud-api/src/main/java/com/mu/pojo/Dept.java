@@ -6,6 +6,9 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
+/**
+ * @author MUZUKI
+ */
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)

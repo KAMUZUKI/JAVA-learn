@@ -4,6 +4,9 @@ import com.mu.pojo.Dept;
 
 import java.util.List;
 
+/**
+ * @author MUZUKI
+ */
 public interface DeptService {
     boolean add(Dept dept);
 

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @author MUZUKI
+ */
 @Mapper
 @Repository
 public interface DeptDao {

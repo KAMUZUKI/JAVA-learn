@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author MUZUKI
+ */
 @Service
 public class DeptServiceImpl implements DeptService {
     @Autowired

@@ -4,9 +4,13 @@ import com.mu.pojo.Dept;
 import com.mu.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sun.security.krb5.internal.NetClient;
 
 import java.util.List;
 
+/**
+ * @author MUZUKI
+ */
 @RestController
 public class DeptController {
     @Autowired
@@ -26,4 +30,21 @@ public class DeptController {
     public List<Dept> queryList() {
         return deptService.queryList();
     }
+
+    // 注册进来的微服务  获取一些消息
+//    @GetMapping("/dept/discovery")
+//    public Object discovery() {
+//       List<String> services = client.getServices();
+//        System.out.println("discovery=>services:"+services);
+//
+//        List<ServiceInstance> instances = client.getInstances("springcloud-provider-dept");
+//
+//        for(ServiceInstance instance : instances){
+//            System.out.println(
+//                    instance.getHost()+"\t"+
+//                    instance.getPort()+"\t"+
+//                    instance.getUrl()+"\t"+
+//            );
+//        }
+//    }
 }

@@ -12,9 +12,12 @@
     <groupId>com.mu</groupId>
     <artifactId>springcloud-euraka-7001</artifactId>
 
-    <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
-    </properties>
-
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-eureka-server -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+    </dependencies>
 </project>
