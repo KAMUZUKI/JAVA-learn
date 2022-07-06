@@ -5,7 +5,9 @@
 *.log
 
 .idea
+.mvn
 out/
+target/
 
 # BlueJ files
 *.ctxt
