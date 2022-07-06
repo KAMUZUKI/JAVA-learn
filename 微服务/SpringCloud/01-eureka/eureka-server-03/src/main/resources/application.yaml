@@ -1,0 +1,17 @@
+server:
+  port: 7003 # 为什么是 8761 ，其他端口就报错
+
+spring:
+  application:
+    name: eureka-server-03 # 服务名称
+
+eureka:
+  client:
+    fetch-registry: true # 是否拉取服务列表
+    register-with-eureka: true # 是否注册自己（集群需要注册自己和拉取服务）
+    service-url:
+      defaultZone: http://peer1:7001/eureka/,http://peer2:7002/eureka/
+  server:
+    eviction-interval-timer-in-ms: 90000 # 清除无效节点的评率 ( 毫秒 )
+  instance:
+    lease-expiration-duration-in-seconds: 90 #server 在等待下一个客户端发送的心跳时间，若在指定时间不能收到客户端心跳，则剔除此实例并且禁止流量

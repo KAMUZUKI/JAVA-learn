@@ -1,0 +1,11 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: eureka-client-b
+
+eureka:
+  client:
+    service-url: #eureka 服务端和客户端的交互地址
+      defaultZone: http://localhost:7001/eureka/
