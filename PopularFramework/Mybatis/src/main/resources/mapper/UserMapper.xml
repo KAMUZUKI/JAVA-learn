@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mu.mapper.UserMapper">
+    <select id="getUserByUsername" resultType="User">
+        select * from user where username = #{username}
+    </select>
+
+    <select id="checkLogin" resultType="User">
+        select * from user where username = #{param1} and password = #{param2}
+    </select>
+
+    <select id="checkLoginParam" resultType="User">
+        select * from user where username = #{username} and password = #{password}
+    </select>
+
+    <insert id="addUser">
+        Insert into user(username,password) values(#{username},#{password})
+    </insert>
+</mapper>
