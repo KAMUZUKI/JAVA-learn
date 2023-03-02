@@ -1,10 +1,20 @@
 package com.mu.demo.mapper;
 
-/**
- * @author : MUZUKI
- * @date : 2023-02-28 19:02
- **/
-
+import com.mu.demo.domain.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mu.demo.pojo.User;
-public interface UserMapper extends BaseMapper<User> { }
+
+import java.util.List;
+
+/**
+* @author MUZUKI
+* @description 针对表【user】的数据库操作Mapper
+* @createDate 2023-03-02 20:33:40
+* @Entity generator.domain.User
+*/
+public interface UserMapper extends BaseMapper<User> {
+    List<User> getAllUsers();
+}
+
+
+
+

@@ -1,36 +1,33 @@
 package com.mu.demo;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.mu.demo.mapper.UserMapper;
-import com.mu.demo.pojo.User;
+import com.mu.demo.domain.User;
+import com.mu.demo.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.management.Query;
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.Map;
+
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class MybatisPlusDemoApplicationTests {
 
-    @Autowired
-    private UserMapper mapper;
+    @Autowired(required = false)
+    private UserService userService;
 
     @Test
     public void testSelect() {
-        List<User> list = mapper.selectList(null);
-        assertEquals(5, list.size());
-        list.forEach(System.out::println);
+        Map<Integer, User> allUsers = userService.getAllUsers();
+        System.out.println(allUsers);
     }
 
     @Test
     public void test3(){
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.select("id","name","age").likeRight("name","黄");
-        mapper.selectMaps(queryWrapper).forEach(System.out::println);
+        queryWrapper.select("id","name").likeRight("name","张");
     }
 }
