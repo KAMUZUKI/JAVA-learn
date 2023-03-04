@@ -10,7 +10,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @Entity generator.domain.Flink
 */
 public interface FlinkMapper extends BaseMapper<Flink> {
-
+    /**
+     * 添加友链
+     * @param flink
+     */
+    void addFlink(Flink flink);
 }
 
 

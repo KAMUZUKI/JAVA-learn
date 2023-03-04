@@ -26,7 +26,7 @@ public class UserController {
     @RequestMapping(value = "/getAllUser")
     protected List<Map<String, Object>> getAllUser(){
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.select("id","name","account");
+        queryWrapper.select("id","username","account","phone","email","status","createTime");
         List<Map<String, Object>> userMap = userMapper.selectMaps(queryWrapper);
         return userMap;
     }

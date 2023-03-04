@@ -15,6 +15,10 @@ import org.springframework.stereotype.Service;
 public class FlinkServiceImpl extends ServiceImpl<FlinkMapper, Flink>
     implements FlinkService{
 
+    @Override
+    public void addFlink(Flink flink) {
+
+    }
 }
 
 

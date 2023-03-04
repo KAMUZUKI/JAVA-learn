@@ -9,5 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2023-03-02 20:33:40
 */
 public interface FlinkService extends IService<Flink> {
-
+    /**
+     * 添加友链
+     */
+    void addFlink(Flink flink);
 }

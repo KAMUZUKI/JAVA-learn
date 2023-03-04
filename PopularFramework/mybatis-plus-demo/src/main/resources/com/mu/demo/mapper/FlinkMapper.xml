@@ -19,4 +19,9 @@
         img,description,status,
         sort
     </sql>
+
+    <insert id="addFlink">
+        insert into flink(name,url,img,description,status,sort)
+        values(#{name},#{url},#{img},#{description},#{status},#{sort}
+    </insert>
 </mapper>
