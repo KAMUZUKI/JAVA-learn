@@ -3,8 +3,6 @@ package com.mu.demo.mapper;
 import com.mu.demo.domain.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-import java.util.List;
-
 /**
 * @author MUZUKI
 * @description 针对表【user】的数据库操作Mapper
@@ -12,7 +10,7 @@ import java.util.List;
 * @Entity generator.domain.User
 */
 public interface UserMapper extends BaseMapper<User> {
-    List<User> getAllUsers();
+
 }
 
 

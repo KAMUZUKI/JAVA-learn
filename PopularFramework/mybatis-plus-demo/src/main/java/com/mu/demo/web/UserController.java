@@ -31,12 +31,5 @@ public class UserController {
         return userMap;
     }
 
-    /**
-     * article.action?op=deleteArticle
-     * 删除文章
-     */
-    @RequestMapping(value = "/hello")
-    protected void deleteArticle(){
 
-    }
 }
