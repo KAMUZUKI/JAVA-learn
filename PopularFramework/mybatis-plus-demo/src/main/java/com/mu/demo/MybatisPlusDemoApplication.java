@@ -3,6 +3,8 @@ package com.mu.demo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.jmx.export.annotation.ManagedResource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author MUZUKI
@@ -14,5 +16,4 @@ public class MybatisPlusDemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(MybatisPlusDemoApplication.class, args);
     }
-
 }
