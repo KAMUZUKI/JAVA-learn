@@ -2,6 +2,7 @@ package com.mu.demo.web.model;
 
 import com.mu.demo.domain.Article;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -11,6 +12,7 @@ import java.io.Serializable;
  **/
 
 @Data
+@Accessors(chain = true)
 public class JsonModel implements Serializable {
     /**
      * 0失败  1成功

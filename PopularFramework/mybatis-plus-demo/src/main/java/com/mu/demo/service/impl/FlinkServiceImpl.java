@@ -29,14 +29,14 @@ public class FlinkServiceImpl implements FlinkService {
     @RequestMapping(value = "/addFlink")
     public JsonModel addFlink(HttpServletRequest request) {
         Flink flink = HttpUtils.parseRequestToT(request,Flink.class);
-        flinkDao.addFlink(flink);
-        return null;
+        jm.setCode(flinkDao.addFlink(flink));
+        return jm;
     }
 
     @Override
     @RequestMapping(value = "/getFlink")
     public JsonModel getFlink() {
-        jm.setData(flinkDao.getFlink());
+        jm.setCode(1).setData(flinkDao.getFlink());
         return jm;
     }
 
@@ -44,7 +44,7 @@ public class FlinkServiceImpl implements FlinkService {
     @RequestMapping(value = "/deleteFlinkById")
     public JsonModel deleteFlinkById(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
-        jm.setData(flinkDao.deleteFlinkById(id));
+        jm.setCode(1).setData(flinkDao.deleteFlinkById(id));
         return jm;
     }
 

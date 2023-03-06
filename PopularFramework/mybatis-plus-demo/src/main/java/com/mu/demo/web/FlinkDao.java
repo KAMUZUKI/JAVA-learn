@@ -30,8 +30,8 @@ public class FlinkDao {
      * 添加友链
      * @param flink
      */
-    public void addFlink(Flink flink){
-        flinkMapper.insert(flink);
+    public int addFlink(Flink flink){
+        return flinkMapper.insert(flink);
     }
 
     /**

@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @RequestMapping(value = "/getAllUser")
     public JsonModel getAllUser() {
-        jm.setData(userDao.getAllUser());
+        jm.setCode(1).setData(userDao.getAllUser());
         return jm;
     }
 
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     @RequestMapping(value = "/getLikeList")
     public JsonModel getLikeList(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("userId"));
-        jm.setData(userDao.getLikeList(id));
+        jm.setCode(1).setData(userDao.getLikeList(id));
         return jm;
     }
 }

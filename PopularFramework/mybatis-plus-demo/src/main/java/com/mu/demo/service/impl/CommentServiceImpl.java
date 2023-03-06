@@ -32,7 +32,7 @@ public class CommentServiceImpl implements CommentService {
     @RequestMapping(value = "/addComment")
     public JsonModel addComment(HttpServletRequest request) {
         Comment comment = HttpUtils.parseRequestToT(request, Comment.class);
-        jm.setData(commentDao.addComment(comment));
+        jm.setCode(1).setData(commentDao.addComment(comment));
         return jm;
     }
 
@@ -40,7 +40,7 @@ public class CommentServiceImpl implements CommentService {
     @RequestMapping(value = "/getComments")
     public JsonModel getComments(HttpServletRequest request) {
         int articleId = Integer.parseInt(request.getParameter("articleId"));
-        jm.setData(commentDao.getComments(articleId));
+        jm.setCode(1).setData(commentDao.getComments(articleId));
         return jm;
     }
 }

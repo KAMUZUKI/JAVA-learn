@@ -28,7 +28,12 @@ public class ArticleServiceImpl implements ArticleService {
     public JsonModel addArticle(HttpServletRequest request) {
         JsonModel jm = new JsonModel();
         Article article = HttpUtils.parseRequestToT(request, Article.class);
-        jm.setCode(articleDao.addArticle(article));
+        try {
+            jm.setCode(articleDao.addArticle(article));
+        }catch (Exception e){
+            jm.setCode(0);
+            jm.setMsg("添加文章失败");
+        }
         return jm;
     }
 
@@ -54,7 +59,7 @@ public class ArticleServiceImpl implements ArticleService {
     @RequestMapping(value = "/getAllArticle")
     public JsonModel getAllArticle() {
         JsonModel jm = new JsonModel();
-        jm.setData(articleDao.getAllArticle());
+        jm.setCode(1).setData(articleDao.getAllArticle());
         return jm;
     }
 
@@ -63,7 +68,7 @@ public class ArticleServiceImpl implements ArticleService {
     public JsonModel getArticleById(HttpServletRequest request) {
         JsonModel jm = new JsonModel();
         int articleId = Integer.parseInt(request.getParameter("articleId"));
-        jm.setData(articleDao.getArticleById(articleId));
+        jm.setCode(1).setData(articleDao.getArticleById(articleId));
         return jm;
     }
 
@@ -71,7 +76,7 @@ public class ArticleServiceImpl implements ArticleService {
     @RequestMapping(value = "/getArticleTop")
     public JsonModel getArticleTop() {
         JsonModel jm = new JsonModel();
-        jm.setData(articleDao.getArticleTop());
+        jm.setCode(1).setData(articleDao.getArticleTop());
         return jm;
     }
 
@@ -79,7 +84,7 @@ public class ArticleServiceImpl implements ArticleService {
     @RequestMapping(value = "/getAllTags")
     public JsonModel getAllTags() {
         JsonModel jm = new JsonModel();
-        jm.setData(articleDao.getAllTags());
+        jm.setCode(1).setData(articleDao.getAllTags());
         return jm;
     }
 
@@ -88,7 +93,7 @@ public class ArticleServiceImpl implements ArticleService {
     public JsonModel getArticleByCategory(HttpServletRequest request) {
         JsonModel jm = new JsonModel();
         int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-        jm.setData(articleDao.getArticleByCategory(categoryId));
+        jm.setCode(1).setData(articleDao.getArticleByCategory(categoryId));
         return jm;
     }
 }
