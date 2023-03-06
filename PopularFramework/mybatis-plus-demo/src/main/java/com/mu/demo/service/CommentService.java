@@ -3,6 +3,8 @@ package com.mu.demo.service;
 import com.mu.demo.domain.Comment;
 import com.mu.demo.web.model.JsonModel;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
 * @author MUZUKI
 * @description 针对表【comment】的数据库操作Service
@@ -11,15 +13,15 @@ import com.mu.demo.web.model.JsonModel;
 public interface CommentService {
     /**
      * 添加评论
-     * @param comment
+     * @param request 请求
      * @return 添加成功返回1，否则返回0
      */
-    JsonModel addComment(Comment comment);
+    JsonModel addComment(HttpServletRequest request);
 
     /**
      * 通过文章id获取文章评论
-     * @param articleId
+     * @param request 请求
      * @return 评论列表
      */
-    JsonModel getComments(int articleId);
+    JsonModel getComments(HttpServletRequest request);
 }

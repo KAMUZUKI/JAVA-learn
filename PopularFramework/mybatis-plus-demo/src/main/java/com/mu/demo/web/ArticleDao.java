@@ -87,9 +87,9 @@ public class ArticleDao {
     /**
      * 根据分类获取文章
      */
-    public List<Article> getArticleByCategory(String category) {
+    public List<Article> getArticleByCategory(int categoryId) {
         QueryWrapper<Article> wrapper = new QueryWrapper<>();
-        wrapper.eq("category", category);
+        wrapper.eq("categoryId", categoryId);
         return articleMapper.selectList(wrapper);
     }
 }

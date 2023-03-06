@@ -23,11 +23,10 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     ArticleDao articleDao;
 
-    private JsonModel jm = new JsonModel();
-
     @Override
     @RequestMapping(value = "/addArticle")
     public JsonModel addArticle(HttpServletRequest request) {
+        JsonModel jm = new JsonModel();
         Article article = HttpUtils.parseRequestToT(request, Article.class);
         jm.setCode(articleDao.addArticle(article));
         return jm;
@@ -36,6 +35,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @RequestMapping(value = "/deleteArticle")
     public JsonModel deleteArticle(HttpServletRequest request) {
+        JsonModel jm = new JsonModel();
         int articleId = Integer.parseInt(request.getParameter("articleId"));
         jm.setCode(articleDao.deleteArticle(articleId));
         return jm;
@@ -44,6 +44,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @RequestMapping(value = "/alterArticle")
     public JsonModel alterArticle(HttpServletRequest request) {
+        JsonModel jm = new JsonModel();
         Article article = HttpUtils.parseRequestToT(request, Article.class);
         jm.setCode(articleDao.alterArticle(article));
         return jm;
@@ -52,6 +53,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @RequestMapping(value = "/getAllArticle")
     public JsonModel getAllArticle() {
+        JsonModel jm = new JsonModel();
         jm.setData(articleDao.getAllArticle());
         return jm;
     }
@@ -59,6 +61,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @RequestMapping(value = "/getArticleById")
     public JsonModel getArticleById(HttpServletRequest request) {
+        JsonModel jm = new JsonModel();
         int articleId = Integer.parseInt(request.getParameter("articleId"));
         jm.setData(articleDao.getArticleById(articleId));
         return jm;
@@ -67,6 +70,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @RequestMapping(value = "/getArticleTop")
     public JsonModel getArticleTop() {
+        JsonModel jm = new JsonModel();
         jm.setData(articleDao.getArticleTop());
         return jm;
     }
@@ -74,6 +78,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @RequestMapping(value = "/getAllTags")
     public JsonModel getAllTags() {
+        JsonModel jm = new JsonModel();
         jm.setData(articleDao.getAllTags());
         return jm;
     }
@@ -81,8 +86,9 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @RequestMapping(value = "/getByCategory")
     public JsonModel getArticleByCategory(HttpServletRequest request) {
-        String category = request.getParameter("category");
-        jm.setData(articleDao.getArticleByCategory(category));
+        JsonModel jm = new JsonModel();
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        jm.setData(articleDao.getArticleByCategory(categoryId));
         return jm;
     }
 }

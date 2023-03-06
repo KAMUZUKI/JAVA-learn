@@ -1,39 +1,58 @@
 package com.mu.demo.service.impl;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mu.demo.domain.Flink;
-import com.mu.demo.mapper.FlinkMapper;
 import com.mu.demo.service.FlinkService;
+import com.mu.demo.utils.HttpUtils;
+import com.mu.demo.web.FlinkDao;
 import com.mu.demo.web.model.JsonModel;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
 * @author MUZUKI
 * @description 针对表【flink】的数据库操作Service实现
 * @createDate 2023-03-05 19:20:49
 */
-@Service
+@RestController
+@RequestMapping("/flink")
 public class FlinkServiceImpl implements FlinkService {
 
+    @Autowired
+    private FlinkDao flinkDao;
+
+    private JsonModel jm = new JsonModel();
+
     @Override
-    public JsonModel addFlink(Flink flink) {
+    @RequestMapping(value = "/addFlink")
+    public JsonModel addFlink(HttpServletRequest request) {
+        Flink flink = HttpUtils.parseRequestToT(request,Flink.class);
+        flinkDao.addFlink(flink);
         return null;
     }
 
     @Override
+    @RequestMapping(value = "/getFlink")
     public JsonModel getFlink() {
-        return null;
+        jm.setData(flinkDao.getFlink());
+        return jm;
     }
 
     @Override
-    public JsonModel deleteFlinkById(int id) {
-        return null;
+    @RequestMapping(value = "/deleteFlinkById")
+    public JsonModel deleteFlinkById(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        jm.setData(flinkDao.deleteFlinkById(id));
+        return jm;
     }
 
-    @Override
-    public JsonModel alterPassword(String oldPassword, String newPassword, String confirmPassword) {
-        return null;
-    }
+//    @Override
+//    public JsonModel alterPassword(HttpServletRequest request) {
+//        String oldPassword, String newPassword, String confirmPassword
+//        return null;
+//    }
 }
 
 

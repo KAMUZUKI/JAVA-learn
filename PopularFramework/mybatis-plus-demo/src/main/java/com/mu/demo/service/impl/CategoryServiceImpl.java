@@ -25,7 +25,7 @@ public class CategoryServiceImpl implements CategoryService {
     private JsonModel jm = new JsonModel();
 
     @Override
-    @PostMapping(value = "/getCategory")
+    @RequestMapping(value = "/getCategory")
     public JsonModel getCategory() {
         jm.setData(categoryDao.getCategory());
         return jm;
