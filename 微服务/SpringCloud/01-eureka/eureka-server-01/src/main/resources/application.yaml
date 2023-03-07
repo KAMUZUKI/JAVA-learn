@@ -10,7 +10,8 @@ eureka:
     fetch-registry: true # 是否拉取服务列表
     register-with-eureka: true # 是否注册自己（集群需要注册自己和拉取服务）
     service-url:
-      defaultZone: http://peer1:7001/eureka/,http://peer2:7002/eureka/,http://peer3:7003/eureka/
+      defaultZone: http://peer1:7001/eureka/,http://peer2:7002/eureka/
+#      ,http://peer2:7002/eureka/,http://peer3:7003/eureka/
   server:
     eviction-interval-timer-in-ms: 90000 # 清除无效节点的评率 ( 毫秒 )
   instance:
