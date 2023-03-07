@@ -40,19 +40,19 @@ public class UserDao {
      */
     public List<Integer> getLikeList(int id) {
         //获取从前台传过来的用户id
-        JedisUtils jedisUtil = new JedisUtils();
-        Jedis jedis = jedisUtil.getRedisInstance();
+//        JedisUtils jedisUtil = new JedisUtils();
+//        Jedis jedis = jedisUtil.getRedisInstance();
         List<Integer> likeList=new ArrayList<Integer>();
-        if (!jedis.exists(id + Constants.REDIS_USER_PRAISE)) {
-            likeList = null;
-        } else {
-            Set<String> set = jedis.smembers(id + Constants.REDIS_USER_PRAISE);
-            if (set.size() > 0) {
-                for (String str : set) {
-                    likeList.add(Integer.parseInt(str));
-                }
-            }
-        }
+//        if (!jedis.exists(id + Constants.REDIS_USER_PRAISE)) {
+//            likeList = null;
+//        } else {
+//            Set<String> set = jedis.smembers(id + Constants.REDIS_USER_PRAISE);
+//            if (set.size() > 0) {
+//                for (String str : set) {
+//                    likeList.add(Integer.parseInt(str));
+//                }
+//            }
+//        }
         return likeList;
     }
 }

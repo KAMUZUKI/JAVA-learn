@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @MapperScan("com.mu.demo.mapper")
 public class MybatisPlusDemoApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(MybatisPlusDemoApplication.class, args);
     }

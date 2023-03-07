@@ -1,25 +1,22 @@
 package com.mu.demo.utils;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Controller;
+import com.mu.demo.config.JedisConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
-
-import static redis.clients.jedis.HostAndPort.localhost;
 
 /**
  * @author : MUZUKI
  * @date : 2023-03-05 10:15
  **/
-@Controller
+@Component
 public class JedisUtils {
-    @Value("${redis.host}")
-    private String REDIS_HOST = "localhost";
 
-    @Value("${redis.port}")
-    private Integer REDIS_PORT = 6379;
+
+    @Autowired
+    private JedisConfig jedisConfig;
 
     public Jedis getRedisInstance(){
-        return new Jedis(REDIS_HOST,REDIS_PORT);
+        return new Jedis(jedisConfig.getREDIS_HOST(),jedisConfig.getREDIS_PORT());
     }
 }
