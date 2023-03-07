@@ -7,11 +7,10 @@ import redis.clients.jedis.Jedis;
 
 /**
  * @author : MUZUKI
- * @date : 2023-03-05 10:15
+ * @date : 2023-03-07 18:54
  **/
 @Component
 public class JedisUtils {
-
 
     @Autowired
     private JedisConfig jedisConfig;

@@ -1,6 +1,12 @@
+
+# DataSource Config
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ry?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-    username: root
-    password: muzuki
+      url: jdbc:mysql://localhost:3306/ry?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      username: root
+      password: muzuki
+  sql:
+    init:
+      schema-locations: classpath:db/schema-h2.sql
+      data-locations: classpath:db/data-h2.sql

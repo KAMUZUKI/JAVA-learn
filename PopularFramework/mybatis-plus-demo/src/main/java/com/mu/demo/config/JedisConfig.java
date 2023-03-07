@@ -1,6 +1,7 @@
 package com.mu.demo.config;
 
 import org.springframework.beans.factory.annotation.Value;
+<<<<<<< HEAD
 import org.springframework.stereotype.Component;
 
 /**
