@@ -12,10 +12,23 @@ import redis.clients.jedis.Jedis;
 @Component
 public class JedisUtils {
 
-    @Autowired
-    private JedisConfig jedisConfig;
+    private static JedisConfig jedisConfig;
 
-    public Jedis getRedisInstance(){
-        return new Jedis(jedisConfig.getREDIS_HOST(),jedisConfig.getREDIS_PORT());
+    private static Jedis jedis = null;
+
+    @Autowired
+    public void setJedisConfig(JedisConfig jedisConfig) {
+        JedisUtils.jedisConfig = jedisConfig;
     }
+
+    private JedisUtils(){
+    }
+
+    public static Jedis getInstance() {
+        if (jedis == null){
+            jedis = new Jedis(jedisConfig.getREDIS_HOST(), jedisConfig.getREDIS_PORT());
+        }
+        return jedis;
+    }
+
 }

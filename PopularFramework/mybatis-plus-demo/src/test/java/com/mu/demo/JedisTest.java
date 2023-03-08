@@ -2,7 +2,6 @@ package com.mu.demo;
 
 import com.mu.demo.utils.JedisUtils;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import redis.clients.jedis.Jedis;
 
@@ -15,26 +14,9 @@ import redis.clients.jedis.Jedis;
 
 @SpringBootTest
 public class JedisTest {
-
-    @Autowired
-    private JedisUtils jedisUtils;
-
     @Test
     void contextLoads() {
-        Jedis jedis = jedisUtils.getRedisInstance();
-        System.out.println(jedisUtils);
+        Jedis jedis = JedisUtils.getInstance();
         System.out.println(jedis);
-    }
-
-    @Test
-    void test(){
-        ValueTest valueTest = new ValueTest();
-        valueTest.getValue();
-    }
-
-    @Test
-    void test2(){
-        TestDemo testDemo = new TestDemo();
-        System.out.println(testDemo);
     }
 }

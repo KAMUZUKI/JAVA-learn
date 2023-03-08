@@ -35,7 +35,7 @@ public class CommentDao {
      */
     public List<Comment> getComments(int articleId){
         QueryWrapper<Comment> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("articleId", articleId);
+        queryWrapper.eq("article_id", articleId);
         return commentMapper.selectList(queryWrapper);
     }
 }

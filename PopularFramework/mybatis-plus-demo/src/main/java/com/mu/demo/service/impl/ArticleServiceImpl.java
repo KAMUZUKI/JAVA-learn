@@ -96,6 +96,20 @@ public class ArticleServiceImpl implements ArticleService {
         jm.setCode(1).setData(articleDao.getArticleByCategory(categoryId));
         return jm;
     }
+
+    @Override
+    @RequestMapping(value = "/changeData")
+    public JsonModel changeData(HttpServletRequest request) {
+        JsonModel jm = new JsonModel();
+        String articleId = request.getParameter("articleId");
+        String userId = request.getParameter("userId");
+        if(articleDao.changeData(articleId,userId)){
+            jm.setCode(1).setMsg("点赞成功");
+        }else {
+            jm.setCode(0).setMsg("点赞失败 等待检测网络重试");
+        }
+        return jm;
+    }
 }
 
 

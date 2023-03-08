@@ -3,8 +3,14 @@ package com.mu.demo.web;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.mu.demo.domain.Article;
 import com.mu.demo.mapper.ArticleMapper;
+import com.mu.demo.utils.Constants;
+import com.mu.demo.utils.JedisUtils;
+import com.mu.demo.web.model.JsonModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import redis.clients.jedis.Jedis;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -61,7 +67,7 @@ public class ArticleDao {
      */
     public List<Article> getArticleTop() {
         QueryWrapper<Article> wrapper = new QueryWrapper<>();
-        wrapper.select("id", "title", "content", "readcnt").orderByDesc("readcnt").last("limit 3");
+        wrapper.select("id", "title", "content", "read_cnt").orderByDesc("read_cnt").last("limit 3");
         return articleMapper.selectList(wrapper);
     }
 
@@ -71,8 +77,27 @@ public class ArticleDao {
      * redis:
      * 浏览量:键key->readCnt:值value->ArticleId_
      */
-    public void changeData(String key, String value) {
+    public boolean changeData(String articleId, String userId) {
         //TODO:
+        try {
+            Jedis jedis = JedisUtils.getInstance();
+            if (jedis.sismember(articleId + Constants.REDIS_ARTICLE_PRAISE, userId + "")) {
+                //此用户已经对这篇文章点赞,再点就是取消
+                //删除对文章点过赞的用户
+                jedis.srem(articleId + Constants.REDIS_ARTICLE_PRAISE, userId + "");
+                //删除用户点过赞的文章
+                jedis.srem(userId + Constants.REDIS_USER_PRAISE, articleId + "");
+            } else {
+                //此用户没有对这篇文章点过赞
+                //添加用户点过赞的文章
+                jedis.sadd(userId + Constants.REDIS_USER_PRAISE, articleId + "");
+                //添加文章被哪些用户点过赞
+                jedis.sadd(articleId + Constants.REDIS_ARTICLE_PRAISE, userId + "");
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -89,7 +114,7 @@ public class ArticleDao {
      */
     public List<Article> getArticleByCategory(int categoryId) {
         QueryWrapper<Article> wrapper = new QueryWrapper<>();
-        wrapper.eq("categoryId", categoryId);
+        wrapper.eq("category_id", categoryId);
         return articleMapper.selectList(wrapper);
     }
 }

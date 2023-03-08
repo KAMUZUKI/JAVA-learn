@@ -5,6 +5,7 @@ import com.mu.demo.mapper.UserMapper;
 import com.mu.demo.domain.User;
 import com.mu.demo.utils.Constants;
 import com.mu.demo.utils.JedisUtils;
+import com.mu.demo.utils.Md5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,28 @@ public class UserDao {
     private UserMapper userMapper;
 
     /**
+     * 用户登录
+     * @param user 用户信息
+     * @return 用户信息
+     */
+    public User login(String account,String password) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        String md5_pwd = Md5.getInstance().getMD5(password);
+        queryWrapper.eq("account", account);
+        queryWrapper.eq("pwd", md5_pwd);
+        return userMapper.selectOne(queryWrapper);
+    }
+
+    /**
+     * 用户注册
+     * @param user 用户信息
+     * @return 用户信息
+     */
+    public int register(User user) {
+        return userMapper.insert(user);
+    }
+
+    /**
      * 获取全部用户
      * @return 用户集合
      */
@@ -37,22 +60,23 @@ public class UserDao {
 
     /**
      * 获取用户喜欢的文章列表
+     * @param id 用户id
+     * @return 文章id集合
      */
     public List<Integer> getLikeList(int id) {
         //获取从前台传过来的用户id
-//        JedisUtils jedisUtil = new JedisUtils();
-//        Jedis jedis = jedisUtil.getRedisInstance();
+        Jedis jedis = JedisUtils.getInstance();
         List<Integer> likeList=new ArrayList<Integer>();
-//        if (!jedis.exists(id + Constants.REDIS_USER_PRAISE)) {
-//            likeList = null;
-//        } else {
-//            Set<String> set = jedis.smembers(id + Constants.REDIS_USER_PRAISE);
-//            if (set.size() > 0) {
-//                for (String str : set) {
-//                    likeList.add(Integer.parseInt(str));
-//                }
-//            }
-//        }
+        if (!jedis.exists(id + Constants.REDIS_USER_PRAISE)) {
+            likeList = null;
+        } else {
+            Set<String> set = jedis.smembers(id + Constants.REDIS_USER_PRAISE);
+            if (set.size() > 0) {
+                for (String str : set) {
+                    likeList.add(Integer.parseInt(str));
+                }
+            }
+        }
         return likeList;
     }
 }

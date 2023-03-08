@@ -62,4 +62,11 @@ public interface ArticleService {
      * @return 文章列表
      */
     JsonModel getArticleByCategory(HttpServletRequest request);
+
+    /**
+     * 根据标签获取文章更新点赞
+     * @param request 请求
+     * @return 操作结果
+     */
+    JsonModel changeData(HttpServletRequest request);
 }

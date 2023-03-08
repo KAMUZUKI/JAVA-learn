@@ -11,6 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 */
 public interface UserService{
     /**
+     * 用户登录
+     * @return 登录结果
+     */
+    JsonModel login(HttpServletRequest request);
+
+    /**
+     * 用户注册
+     * @return 注册结果
+     */
+    JsonModel register(HttpServletRequest request);
+
+    /**
      * 获取所有用户
      * @return 用户列表
      */
