@@ -1,0 +1,15 @@
+spring:
+  mvc:
+  servlet:
+    multipart:
+      max-file-size: 10MB  		# 设置单个文件最大大小为10MB
+      max-request-size: 100MB  	# 设置多个文件大小为100MB
+
+qcloud:
+  #初始化用户身份信息 前往控制台密钥管理查看
+  secretId: "AKIDKSM1SggWCftwnOkrmV0GLCpDMJF0Zu44"
+  secretKey: "qTvBCzZw62kDUYdfXBcoqgJk294lIdnl"
+  # 指定要上传到的存储桶
+  bucketName: "mu-1310320682"
+  # 地区选择
+  regionName: "ap-guangzhou"
