@@ -1,10 +1,8 @@
 package com.mu.demo;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Constants;
-import com.mu.demo.domain.User;
-import com.mu.demo.mapper.UserMapper;
-import org.apache.ibatis.annotations.Param;
+import com.mu.demo.framework.domain.User;
+import com.mu.demo.framework.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;

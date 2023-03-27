@@ -1,6 +1,6 @@
 package com.mu.demo;
 
-import com.mu.demo.utils.JedisUtils;
+import com.mu.demo.framework.utils.JedisUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import redis.clients.jedis.Jedis;
